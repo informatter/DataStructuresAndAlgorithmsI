@@ -1,4 +1,4 @@
-/////git/v
+/////git/v//
 public class Foo
 {
 
