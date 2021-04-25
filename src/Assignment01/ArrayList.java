@@ -51,22 +51,15 @@ public class ArrayList<T>
 
         }
 
-        
-        
-
+    
         for(int i=size-1;i>=0;i--)
-        {
-            T val = backingArray[i];
-
             backingArray[i+1] = backingArray[i];
-        }
         
-       // T firstElementCopy = backingArray[0];
-
+        
         backingArray[0] = data;
+        
         size++;
-
-      
+    
     }
 
     public void addToBack(T data) throws Exception {
