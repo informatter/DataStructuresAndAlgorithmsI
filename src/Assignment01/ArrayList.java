@@ -1,5 +1,7 @@
 package src.Assignment01;
 
+import java.util.NoSuchElementException;
+
 public class ArrayList<T>
 {
     // ALL THE ADDED FIELDS CAME WITH THE EXERCISE TEMPLATE
@@ -18,15 +20,22 @@ public class ArrayList<T>
 
     }
 
-    private void checkNull(T data) throws Exception{
+    private void nullElementException(T data) throws Exception{
 
         if(data ==null)
             throw new IllegalArgumentException("Cant add a null item!");
     }
 
+    private void emptyArrayListException () throws Exception
+    {
+        if(size==0)
+            throw new NoSuchElementException("Can remove an element from an empty ArrayList!");
+
+    }
+
     public void addToFront(T data) throws Exception{
 
-        this.checkNull(data);
+        this.nullElementException(data);
       
         if(size == INITIAL_CAPACITY)
         {
@@ -64,7 +73,7 @@ public class ArrayList<T>
 
     public void addToBack(T data) throws Exception {
         
-        this.checkNull(data);   
+        this.nullElementException(data);   
 
        if(size==INITIAL_CAPACITY)
        {        
@@ -96,7 +105,9 @@ public class ArrayList<T>
     }
 
 
-    public T removeFromFront() {
+    public T removeFromFront() throws Exception {
+        
+        this.emptyArrayListException();
         
         T removed =null;
 
@@ -122,8 +133,10 @@ public class ArrayList<T>
         return removed;
     }
 
-    public T removeFromBack() {
+    public T removeFromBack() throws Exception {
 
+       this.emptyArrayListException();
+       
         T removed = backingArray[size-1];
 
         backingArray[size-1] = null;
