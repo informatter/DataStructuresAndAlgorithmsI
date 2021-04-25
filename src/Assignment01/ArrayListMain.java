@@ -6,14 +6,17 @@ public class ArrayListMain
     {
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
 
-        int [] a = {1,2,3,4,5,6,7,8,9,10,11};
+        int [] b = {3,8,5,1,14};
 
-        for (int i : a) {
+        for (int i : b) {
 
-            arrayList.addToBack(i);
+           // arrayList.addToBack(i);
+
+           arrayList.addToFront(i);
         }
-        
+
         arrayList.removeFromFront();
 
     }
+
 }

@@ -2,6 +2,9 @@ package src.Assignment01;
 
 public class ArrayList<T>
 {
+    // ALL THE ADDED FIELDS CAME WITH THE EXERCISE TEMPLATE
+    // AND COULD NOT BE CHANGED. NEW FILEDS COULD ALSO NOT BE ADDED!
+
     public static final int INITIAL_CAPACITY = 9;
 
     private T[] backingArray;
@@ -15,12 +18,60 @@ public class ArrayList<T>
 
     }
 
-    public void addToBack(T data) throws Exception {
-        
+    private void checkNull(T data) throws Exception{
 
         if(data ==null)
-            throw new Exception("Cant add a null item!");
-      // int totalCurrentItems =  backingArray.length; => total capacity of array.
+            throw new IllegalArgumentException("Cant add a null item!");
+    }
+
+    public void addToFront(T data) throws Exception{
+
+        this.checkNull(data);
+      
+        if(size == INITIAL_CAPACITY)
+        {
+            T [] temp = (T[]) new  Object[INITIAL_CAPACITY*2];
+   
+            for(int i=0;i<=size;i++)
+           {   
+               if(i==0)              
+                    temp[i] = data;
+               
+
+               if(i<size && i!=0)              
+                    temp[i+1] = backingArray[i];
+                     
+           }
+
+           backingArray = temp;
+
+           size++;
+
+           return;
+
+        }
+
+        
+        
+
+        for(int i=size-1;i>=0;i--)
+        {
+            T val = backingArray[i];
+
+            backingArray[i+1] = backingArray[i];
+        }
+        
+       // T firstElementCopy = backingArray[0];
+
+        backingArray[0] = data;
+        size++;
+
+      
+    }
+
+    public void addToBack(T data) throws Exception {
+        
+        this.checkNull(data);   
 
        if(size==INITIAL_CAPACITY)
        {        
@@ -50,6 +101,7 @@ public class ArrayList<T>
             backingArray[size-1]=data;
        }  
     }
+
 
     public T removeFromFront() {
         
@@ -97,6 +149,5 @@ public class ArrayList<T>
     public int size() {
         return size;
     }
-
 
 }
