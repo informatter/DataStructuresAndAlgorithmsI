@@ -6,16 +6,24 @@ public class ArrayListMain
     {
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
 
-        int [] b = {3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
+        int [] testB = new int[36];
 
-        for (int i : b) {
+        for (int i = 0; i < testB.length; i++) {
 
-           // arrayList.addToBack(i);
+            testB[i] = i;        
+        }     
 
-           //arrayList.addToFront(i);
+    
+        //int [] b = {3,5,8,1,14};
+
+        for (int i : testB) {
+
+           //arrayList.addToBack(i);
+
+           arrayList.addToFront(i);
         }
 
-        arrayList.removeFromFront();
+        //arrayList.removeFromFront();
 
     }
 
