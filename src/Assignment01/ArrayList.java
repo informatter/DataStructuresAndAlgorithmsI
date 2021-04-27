@@ -19,7 +19,7 @@ public class ArrayList<T> {
     private void nullElementException(T data) throws Exception {
 
         if (data == null)
-            throw new IllegalArgumentException("Can't add a null item!"); 
+            throw new IllegalArgumentException("Can't add a null item!");
     }
 
     private void emptyArrayListException() throws Exception {
@@ -49,15 +49,15 @@ public class ArrayList<T> {
 
     private void resizeAndAddToFront(T data) {
 
-       int newArrayLength = size * 2;
+        int newArrayLength = size * 2;
 
         T[] temp = (T[]) new Object[newArrayLength];
 
         temp[0] = data;
 
         for (int i = 1; i <= size; i++) {
-        
-            temp[i] = backingArray[i-1];
+
+            temp[i] = backingArray[i - 1];
         }
 
         backingArray = temp;
@@ -76,9 +76,8 @@ public class ArrayList<T> {
             return;
         }
 
-    
         if (size == backingArray.length) {
-           
+
             resizeAndAddToFront(data);
 
             size++;
