@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SinlgyLinkedListMain",
+            "request": "launch",
+            "mainClass": "src.Assignment02.SinlgyLinkedListMain",
+            "projectName": "DataStructuresAndAlgorithmsI_5d00686b"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
