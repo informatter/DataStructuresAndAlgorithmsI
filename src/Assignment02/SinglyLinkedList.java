@@ -4,12 +4,31 @@ public class SinglyLinkedList<T>{
 
     private Node<T> head;
 
+    private Node<T> tail;
+
+    private int size;
+
 
     private void canRemove(){
 
-        if(head == null)
+        if(head == null || head.Next.Next == null)
             throw new IllegalArgumentException("can't remove an element from an empty collection.");
     }
+
+    private void canAddToBack(){
+
+        if(size == 0)
+            throw new IllegalArgumentException("can't add an element to the back of an empty SLL.");
+    }
+
+    private boolean hasOneElement(){
+
+        if(head.Next == null)        
+            return true;
+
+     return false;
+    }
+
 
    
     /** 
@@ -21,8 +40,13 @@ public class SinglyLinkedList<T>{
 		
 		newNode.Next = head;
 		
-		head = newNode;
-		
+		head = newNode;		
+
+        if(this.hasOneElement())
+            tail = head;
+
+        size++;
+            
 	}
 
     
@@ -31,69 +55,16 @@ public class SinglyLinkedList<T>{
      */
     public void addToBack(T data){
 
-		Node<T> current = head;
-		
-		while(current.Next!=null)		
-			current = current.Next;			
-		
+        this.canAddToBack();
 
-        if(current.Next ==null)
-		{
-			var newNode = new Node<T>(data);
-			
-			current.Next = newNode;
-		}
+        var newNode = new Node<T>(data);
+
+        tail.Next = newNode;
+
+        tail = newNode;
+
+        size++;
 	}
-
-    
-    
-    /** 
-     * 
-     * @param data The data to create the new node from.
-     * @param index the index to add the data at.
-     * @throws throws and index out of range exception.
-     */
-    public void add(T data, int index){
-
-        // TODO: Needs different implementation.
-        int count = this.count();
-
-        if(index > count || count == 0 && index > 0)
-            throw new IllegalArgumentException("index out of range. Index is larger than the size of the collection.");
-
-        Node<T> current = head;
-
-        int indexCount=0;
-
-        /*
-        while(current.Next!=null)
-        {
-            if(indexCount==index-1)
-            {
-               var newNode = new Node<T>(data);
-
-               var temp = current.Next;
-
-               current.Next = newNode;
-
-               newNode.Next = temp;
-
-                //return;
-
-            }
-
-            current = current.Next;
-
-            indexCount++;
-
-        }
-        */
-
-        if(count == 0 && index== 0)       
-            this.addToFront(data);
-       
-    }
-
 
     
     /** 
@@ -101,29 +72,13 @@ public class SinglyLinkedList<T>{
      * Singly Linked List.
      * @return int
      */
-    public int count()
-	{
-		Node<T> current = head;
-
-        int count=0;
-
-        if (this.head == null)
-            return count;
-        
-        count++;
-			
-		while(current.Next!=null)
-		{
-			current = current.Next;
-			
-			count++;
-		}
-		
-		return count;
+    public int count(){
+        return size;
 	}
 
+   
       /** 
-     * Removes the current head and the heads' next element
+     * Removes the current head and the head's next element
      * will be the new head.
      */
     public void removeFromFront(){
@@ -133,6 +88,8 @@ public class SinglyLinkedList<T>{
         Node<T> current = head;
 
         head = current.Next;
+
+        size--;
     }
 
 
@@ -146,11 +103,16 @@ public class SinglyLinkedList<T>{
 
             current = current.Next;
         }		
-			
-		
-        if(current.Next.Next == null)        
-            current.Next = null;
-        
+					
+        if(current.Next.Next == null){
+
+            current.Next = null;  
+
+            tail = current;
+
+            size--;
+        }  
+
     }
 
 }

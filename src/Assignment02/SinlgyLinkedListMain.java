@@ -12,6 +12,8 @@ public class SinlgyLinkedListMain {
        }
 
        sll.addToBack(10);
+       sll.addToBack(11);
+       sll.addToBack(12);
 
        sll.removeFromBack();
 
