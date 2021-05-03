@@ -4,6 +4,13 @@ public class SinglyLinkedList<T>{
 
     private Node<T> head;
 
+
+    private void canRemove(){
+
+        if(head == null)
+            throw new IllegalArgumentException("can't remove an element from an empty collection.");
+    }
+
    
     /** 
      * @param data The data to create the new node from.
@@ -120,44 +127,30 @@ public class SinglyLinkedList<T>{
      * will be the new head.
      */
     public void removeFromFront(){
-        int count = this.count();
-
-        if(count == 0)
-            throw new IllegalArgumentException("can't remove an element from an empty collection.");
-
+        
+        this.canRemove();
+        
         Node<T> current = head;
 
         head = current.Next;
     }
 
+
     public void removeFromBack(){
 
-        int count = this.count();
-
-        int currentIndexCount =0;
-
-        if(count > 0)
-            currentIndexCount = 1;
+        this.canRemove();
 
         Node<T> current = head;
 
-        while(current.Next!=null)
-		{
-			current = current.Next;
+        while(current.Next.Next!=null){
 
-            currentIndexCount++;
-
-            if(currentIndexCount== count-1){
-
-                current.Next = null;
-            }
-
-		}
-
-    
-
-
-
+            current = current.Next;
+        }		
+			
+		
+        if(current.Next.Next == null)        
+            current.Next = null;
+        
     }
 
 }
