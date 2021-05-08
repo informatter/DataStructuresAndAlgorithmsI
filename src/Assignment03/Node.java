@@ -1,3 +1,5 @@
+
+
 public class Node<T> {
 
     T Data;

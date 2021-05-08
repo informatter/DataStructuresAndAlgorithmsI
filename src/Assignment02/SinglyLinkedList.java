@@ -48,6 +48,7 @@ public class SinglyLinkedList<T> {
      * @param data The data to create the new node from.
      */
     public void addToFront(T data) {
+        
         var newNode = new Node<T>(data);
 
         newNode.Next = head;
