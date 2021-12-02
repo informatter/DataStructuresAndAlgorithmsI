@@ -1,6 +1,9 @@
 package src.Assignment02;
 
-
+/**
+ * A singy linked list with a tail reference.
+ * 
+ */
 public class SinglyLinkedList<T> {
 
     private Node<T> head;
@@ -48,7 +51,7 @@ public class SinglyLinkedList<T> {
      * @param data The data to create the new node from.
      */
     public void addToFront(T data) {
-        
+
         var newNode = new Node<T>(data);
 
         newNode.Next = head;
@@ -108,7 +111,7 @@ public class SinglyLinkedList<T> {
         while (current.Next != null) {
 
             if (indexCount == index - 1) {
-                
+
                 var newNode = new Node<T>(data);
 
                 var temp = current.Next;
@@ -238,22 +241,21 @@ public class SinglyLinkedList<T> {
         }
     }
 
-
-      /**
+    /**
      * Removes nodes with duplicate values.
      */
-    public void removeDuplicates(){
+    public void removeDuplicates() {
         head = removeDuplicateValues(head);
     }
 
-    private  Node<T> removeDuplicateValues(Node<T> current){
+    private Node<T> removeDuplicateValues(Node<T> current) {
 
-        if(current == null)
+        if (current == null)
             return null;
 
         current.Next = removeDuplicateValues(current.Next);
 
-        if(current.Next!=null && current.Data.equals(current.Next.Data))
+        if (current.Next != null && current.Data.equals(current.Next.Data))
             return current.Next;
 
         return current;
