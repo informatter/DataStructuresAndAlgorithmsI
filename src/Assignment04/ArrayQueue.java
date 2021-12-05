@@ -1,6 +1,8 @@
-// Queue data structure with a circular
-// array as backing. resizing is ignored making all operations
-// O(1)
+/* Queue data structure with a circular
+* array as backing. All operations are O(1)
+* Resizing is considered to be ab amortized O(1)
+* in this implementation
+*/
 public class ArrayQueue<T> {
 
     /*
