@@ -1,4 +1,4 @@
-package src.Assignment02;
+//package src.Assignment02;
 
 /**
  * A singy linked list with a tail reference.

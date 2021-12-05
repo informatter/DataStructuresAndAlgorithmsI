@@ -2,7 +2,7 @@ public class QueueMain{
 
     public static void main(String[] args) {
 
-        var queue = new Queue<Integer>(8);
+        var queue = new ArrayQueue<Integer>();
 
         queue.enqueue(0);
 
@@ -19,8 +19,14 @@ public class QueueMain{
         queue.enqueue(50);
         queue.enqueue(51);
 
+        queue.dequeue();   
         queue.dequeue();
         queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+
+        queue.enqueue(44);
+        queue.enqueue(2);
 
     }
 }
